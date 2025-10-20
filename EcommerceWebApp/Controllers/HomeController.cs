@@ -1,4 +1,3 @@
-using EcommerceApp.Services;
 using EcommerceWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 

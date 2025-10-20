@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EcommerceWebApp.Data\EcommerceWebApp.Data.csproj" />
+  </ItemGroup>
+
 </Project>
