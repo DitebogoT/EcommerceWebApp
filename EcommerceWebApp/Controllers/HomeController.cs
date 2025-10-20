@@ -1,32 +1,47 @@
-using System.Diagnostics;
-using EcommerceWebApp.Models;
+using EcommerceApp.Services;
+using EcommerceWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EcommerceWebApp.Controllers
+namespace EcommerceApp.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly IProductService _productService;
+    private readonly ICategoryService _categoryService;
+
+    public HomeController(IProductService productService, ICategoryService categoryService)
     {
-        private readonly ILogger<HomeController> _logger;
+        _productService = productService;
+        _categoryService = categoryService;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index()
+    {
+        var products = await _productService.GetAllProductsAsync();
+        ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
+        return View(products);
+    }
+
+    public async Task<IActionResult> Search(string searchTerm)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
         {
-            _logger = logger;
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        var products = await _productService.SearchProductsAsync(searchTerm);
+        ViewBag.SearchTerm = searchTerm;
+        ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
+        return View("Index", products);
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+    public IActionResult Privacy()
+    {
+        return View();
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public IActionResult Error()
+    {
+        return View();
     }
 }
