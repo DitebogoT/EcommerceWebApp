@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="Views\Orders\" />
   </ItemGroup>
 
   <ItemGroup>
