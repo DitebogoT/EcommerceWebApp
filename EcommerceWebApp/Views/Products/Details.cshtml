@@ -1,0 +1,35 @@
+﻿@model EcommerceWebApp.Models.Product
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.ImageUrl" class="img-fluid rounded shadow-sm" alt="@Model.Name" />
+        </div>
+        <div class="col-md-7">
+            <h2 class="fw-bold">@Model.Name</h2>
+            <p class="text-muted">@Model.Description</p>
+            <h4 class="text-primary mb-3">R @Model.Price</h4>
+            <p><strong>Stock:</strong> @(Model.Stock > 0 ? $"{Model.Stock} available" : "Out of stock")</p>
+
+            @if (Model.Stock > 0)
+            {
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="id" value="@Model.ProductID" />
+                    <div class="input-group mb-3" style="max-width: 200px;">
+                        <input type="number" name="quantity" value="1" min="1" max="@Model.Stock" class="form-control" />
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div class="alert alert-danger">This product is currently unavailable.</div>
+            }
+
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary mt-3">Back to Products</a>
+        </div>
+    </div>
+</div>

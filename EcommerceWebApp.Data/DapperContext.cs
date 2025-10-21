@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace EcommerceWebApp.Data
 {
     public class DapperContext
     {
+        private readonly IConfiguration _config;
         private readonly string _connectionString;
-        public DapperContext(string connectionString)
+
+        public DapperContext(IConfiguration config)
         {
-            _connectionString = connectionString;
+            _config = config;
+            _connectionString = _config.GetConnectionString("DefaultConnection");
         }
-        public System.Data.IDbConnection CreateConnection()
-        {
-            return new System.Data.SqlClient.SqlConnection(_connectionString);
-        }
+
+        public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
     }
 }
