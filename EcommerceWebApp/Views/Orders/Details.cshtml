@@ -1,0 +1,93 @@
+﻿@model EcommerceWebApp.Models.Order
+
+@{
+    ViewData["Title"] = $"Order #{Model.Id}";
+}
+
+<h1>Order Details - #@Model.Id</h1>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Order Information</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Order Date:</strong> @Model.OrderDate.ToString("MMM dd, yyyy hh:mm tt")</p>
+                <p>
+                    <strong>Status:</strong>
+                    @if (Model.Status == "Pending")
+                    {
+                        <span class="badge bg-warning text-dark">@Model.Status</span>
+                    }
+                    else if (Model.Status == "Processing")
+                    {
+                        <span class="badge bg-info">@Model.Status</span>
+                    }
+                    else if (Model.Status == "Shipped")
+                    {
+                        <span class="badge bg-primary">@Model.Status</span>
+                    }
+                    else if (Model.Status == "Delivered")
+                    {
+                        <span class="badge bg-success">@Model.Status</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">@Model.Status</span>
+                    }
+                </p>
+                <p><strong>Total Amount:</strong> $@Model.TotalAmount.ToString("N2")</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Shipping Address</h5>
+            </div>
+            <div class="card-body">
+                <p>@Model.ShippingAddress</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h5>Order Items</h5>
+    </div>
+    <div class="card-body">
+    </div>
+</div>
+    @if (Model.OrderItems.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>$@item.Price.ToString("N2")</td>
+                            <td>$@(item.Quantity * item.Price).ToString("N2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>No items found in this order.</p>
+}
