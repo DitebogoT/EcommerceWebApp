@@ -1,7 +1,6 @@
 using EcommerceWebApp.Data;
 using EcommerceWebApp.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

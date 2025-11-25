@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using EcommerceWebApp.Models;
 using EcommerceWebApp.Data;
+using EcommerceWebApp.Models;
 using System.Security.Cryptography;
 using System.Text;
 

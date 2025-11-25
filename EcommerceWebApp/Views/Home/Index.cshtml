@@ -1,8 +1,66 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<EcommerceWebApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-4">
+    <h1 class="display-4">Welcome to Our Store</h1>
+    <p class="lead">Browse our wide selection of products</p>
 </div>
+
+@if (ViewBag.SearchTerm != null)
+{
+    <div class="alert alert-info">
+        Search results for: <strong>@ViewBag.SearchTerm</strong>
+    </div>
+}
+
+@if (ViewBag.Categories != null)
+{
+    <div class="mb-4">
+        <h5>Categories:</h5>
+        <div class="btn-group" role="group">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">All</a>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <a asp-controller="Products" asp-action="Category" asp-route-id="@category.Id" class="btn btn-outline-primary">@category.Name</a>
+            }
+        </div>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    @foreach (var product in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text"><strong>$@product.Price.ToString("N2")</strong></p>
+                    @if (product.Stock > 0)
+                    {
+                        <p class="text-success">In Stock: @product.Stock</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Out of Stock</p>
+                    }
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductID" class="btn btn-primary btn-sm w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info mt-4">
+        <h4>No products found</h4>
+        <p>Try adjusting your search or browse all products.</p>
+    </div>
+}

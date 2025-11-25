@@ -1,8 +1,6 @@
 ﻿using Dapper;
-using EcommerceWebApp.Models;
 using EcommerceWebApp.Data;
-using System.Security.Cryptography;
-using System.Text;
+using EcommerceWebApp.Models;
 
 namespace EcommerceWebApp.Services
 {
