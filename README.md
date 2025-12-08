@@ -1,4 +1,4 @@
-# E-Commerce Application - Complete Project Summary // This project is still in production , I begin coding it on the 20th of October '25
+# E-Commerce Application - Complete Project Summary // This project is still in production , I began coding it on the 20th of October '25
 
 ## Project Overview
 
