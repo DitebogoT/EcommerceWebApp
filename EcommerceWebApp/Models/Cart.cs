@@ -46,7 +46,8 @@ public class Cart
     public List<CartItem> Items { get; set; } = new();
     public decimal Total => Items.Sum(i => i.Product!.Price * i.Quantity);
     public int ItemCount => Items.Sum(i => i.Quantity);
-    public int ProductID { get; set; }
+    public int ProductID { get; set; } 
+    public int Quantity { get; set; }
     public decimal CartTotal { get; set; } = 0;
     //public string Product { get; set; }
     //       public int Quantity { get; set; } = 0;

@@ -1,44 +1,494 @@
-html {
-    font-size: 14px;
+/* ========================================
+   Luxury E-Commerce Theme
+   Colors: Muted Gold, Warm Taupe, Soft Cream
+   ======================================== */
+
+:root {
+    --luxury-gold: #C9A961;
+    --luxury-taupe: #A6958A;
+    --luxury-cream: #F5F2ED;
+    --luxury-dark-taupe: #7D6E63;
+    --luxury-light-cream: #FDFBF7;
+    --luxury-accent: #B8956A;
+    --text-primary: #3E3530;
+    --text-secondary: #6B5D52;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-    position: relative;
-    min-height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin-bottom: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--luxury-light-cream);
+    line-height: 1.6;
 }
 
-.footer {
+/* ========================================
+   Top Bar
+   ======================================== */
+.top-bar {
+    background-color: var(--luxury-dark-taupe);
+    color: var(--luxury-cream);
+    padding: 8px 0;
+    font-size: 0.85rem;
+}
+
+.top-bar-left, .top-bar-right {
+    display: inline-block;
+}
+
+.top-bar i {
+    color: var(--luxury-gold);
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+.navbar-luxury {
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--luxury-dark-taupe) !important;
+    letter-spacing: 1px;
+}
+
+    .navbar-brand .fa-gem {
+        color: var(--luxury-gold);
+    }
+
+    .navbar-brand:hover {
+        color: var(--luxury-gold) !important;
+    }
+
+.navbar-luxury .nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    .navbar-luxury .nav-link:hover {
+        color: var(--luxury-gold) !important;
+    }
+
+    .navbar-luxury .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--luxury-gold);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar-luxury .nav-link:hover::after {
+        width: 80%;
+    }
+
+.navbar-luxury .dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.navbar-luxury .dropdown-item {
+    padding: 0.6rem 1.5rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+    .navbar-luxury .dropdown-item:hover {
+        background-color: var(--luxury-cream);
+        color: var(--luxury-gold);
+        padding-left: 1.8rem;
+    }
+
+/* ========================================
+   Search Form
+   ======================================== */
+.search-form {
+    width: 300px;
+}
+
+.search-input {
+    border: 2px solid var(--luxury-taupe);
+    border-radius: 25px 0 0 25px;
+    padding: 0.5rem 1rem;
+    background-color: var(--luxury-light-cream);
+}
+
+    .search-input:focus {
+        border-color: var(--luxury-gold);
+        box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+        background-color: #fff;
+    }
+
+.btn-search {
+    background-color: var(--luxury-gold);
+    border: 2px solid var(--luxury-gold);
+    color: #fff;
+    border-radius: 0 25px 25px 0;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+    .btn-search:hover {
+        background-color: var(--luxury-accent);
+        border-color: var(--luxury-accent);
+        transform: scale(1.05);
+    }
+
+/* ========================================
+   Navigation Icons
+   ======================================== */
+.nav-icon-link {
+    position: relative;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+    .nav-icon-link:hover {
+        color: var(--luxury-gold);
+        transform: scale(1.1);
+    }
+
+.icon-badge {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
+    top: -8px;
+    right: -8px;
+    background-color: var(--luxury-gold);
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
 }
 
+/* ========================================
+   Buttons
+   ======================================== */
+.btn-luxury {
+    background-color: var(--luxury-gold);
+    border: 2px solid var(--luxury-gold);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    .btn-luxury:hover {
+        background-color: var(--luxury-accent);
+        border-color: var(--luxury-accent);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+    }
+
+.btn-luxury-outline {
+    background-color: transparent;
+    border: 2px solid var(--luxury-gold);
+    color: var(--luxury-gold);
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    .btn-luxury-outline:hover {
+        background-color: var(--luxury-gold);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+    }
+
+/* ========================================
+   Cards
+   ======================================== */
 .card {
-    transition: transform 0.2s;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    background-color: #fff;
 }
 
     .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
-.product-image {
-    height: 200px;
+.card-img-top {
+    height: 250px;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.card-footer {
+    background-color: var(--luxury-cream);
+    border-top: none;
+    padding: 1rem 1.5rem;
+}
+
+/* ========================================
+   Alerts
+   ======================================== */
+.custom-alert {
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+.main-content {
+    min-height: calc(100vh - 400px);
+    padding: 2rem 0;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.luxury-footer {
+    background: linear-gradient(135deg, var(--luxury-dark-taupe) 0%, var(--luxury-taupe) 100%);
+    color: var(--luxury-cream);
+    margin-top: 4rem;
+}
+
+.footer-heading {
+    color: var(--luxury-gold);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-text {
+    color: var(--luxury-cream);
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+    .footer-links li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+        color: var(--luxury-cream);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        opacity: 0.9;
+    }
+
+        .footer-links a:hover {
+            color: var(--luxury-gold);
+            padding-left: 5px;
+        }
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+    .footer-contact li {
+        margin-bottom: 0.8rem;
+        color: var(--luxury-cream);
+        opacity: 0.9;
+    }
+
+    .footer-contact i {
+        color: var(--luxury-gold);
+    }
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: var(--luxury-cream);
+    transition: all 0.3s ease;
+}
+
+    .social-link:hover {
+        background-color: var(--luxury-gold);
+        color: #fff;
+        transform: translateY(-3px);
+    }
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+.payment-icon {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+    .payment-icon:hover {
+        opacity: 1;
+    }
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 992px) {
+    .search-form {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .top-bar-left, .top-bar-right {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar-luxury .navbar-collapse {
+        margin-top: 1rem;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .top-bar {
+        font-size: 0.75rem;
+    }
+
+    .footer-heading {
+        margin-top: 1.5rem;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+/* ========================================
+   Tables
+   ======================================== */
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background-color: var(--luxury-taupe);
+        color: #fff;
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--luxury-light-cream);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--luxury-cream);
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+.form-control:focus {
+    border-color: var(--luxury-gold);
+    box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+}
+
+.form-select:focus {
+    border-color: var(--luxury-gold);
+    box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+}
+
+/* ========================================
+   Badges
+   ======================================== */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.text-luxury-gold {
+    color: var(--luxury-gold);
+}
+
+.bg-luxury-cream {
+    background-color: var(--luxury-cream);
+}
+
+.bg-luxury-taupe {
+    background-color: var(--luxury-taupe);
 }

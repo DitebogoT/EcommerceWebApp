@@ -1,6 +1,8 @@
 using EcommerceWebApp.Data;
 using EcommerceWebApp.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Dapper;
+using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
